@@ -1,4 +1,4 @@
-# interview_newstartup
+# interview_figma_newstartup
 
 A new Flutter project.
 

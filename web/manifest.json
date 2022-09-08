@@ -1,6 +1,6 @@
 {
-    "name": "interview_newstartup",
-    "short_name": "interview_newstartup",
+    "name": "interview_figma_newstartup",
+    "short_name": "interview_figma_newstartup",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
-project(interview_newstartup LANGUAGES CXX)
+project(interview_figma_newstartup LANGUAGES CXX)
 
-set(BINARY_NAME "interview_newstartup")
+set(BINARY_NAME "interview_figma_newstartup")
 
 cmake_policy(SET CMP0063 NEW)
 
