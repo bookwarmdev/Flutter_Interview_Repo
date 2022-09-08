@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.wimtorq">
+    package="com.example.lox_corporate_services">
    <application
-        android:label="wimtorq"
+        android:label="lox_corporate_services"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
