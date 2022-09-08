@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.flutter_interview">
+    package="com.example.wimtorq">
    <application
-        android:label="flutter_interview"
+        android:label="wimtorq"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
