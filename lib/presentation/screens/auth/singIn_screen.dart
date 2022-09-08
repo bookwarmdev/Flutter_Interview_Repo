@@ -4,16 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:interview_newstartup/core/core.dart';
 import 'package:interview_newstartup/presentation/provider/provider.dart';
 import 'package:interview_newstartup/presentation/routers/router.gr.dart';
-import 'package:provider/provider.dart';
 
-class SingUpScreen extends StatefulWidget {
-  const SingUpScreen({Key? key}) : super(key: key);
+class SingInScreen extends StatefulWidget {
+  const SingInScreen({Key? key}) : super(key: key);
 
   @override
-  State<SingUpScreen> createState() => _SingUpScreenState();
+  State<SingInScreen> createState() => _SingInScreenState();
 }
 
-class _SingUpScreenState extends State<SingUpScreen> {
+class _SingInScreenState extends State<SingInScreen> {
   final formGlobalKey = GlobalKey<FormState>();
 
   final TextEditingController _email = TextEditingController();
@@ -21,9 +20,14 @@ class _SingUpScreenState extends State<SingUpScreen> {
   bool _isPasswordVisible = true;
 
   @override
-  Widget build(BuildContext context) {
-    CounterProvider _counterProvider = Provider.of<CounterProvider>(context);
+  void dispose() {
+    super.dispose();
+    formGlobalKey.currentState!.dispose();
+  }
 
+  @override
+  Widget build(BuildContext context) {
+    CounterProvider _counterProvider = CounterProvider();
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 30.0),
@@ -39,7 +43,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
                     height: 20.0,
                   ),
                   Text(
-                    'Create Account',
+                    'Sign In',
                     style: AppStyle.headline4,
                   ),
                   const SizedBox(
@@ -59,7 +63,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
                     style: AppStyle.caption.copyWith(),
                     validator: (value) {
                       if (value!.trim().isEmpty) {
-                        return 'Empty InputField';
+                        return 'error';
                       }
                       return null;
                     },
@@ -117,7 +121,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
                     obscureText: _isPasswordVisible,
                     validator: (value) {
                       if (value!.trim().isEmpty) {
-                        return 'Empty InputField';
+                        return 'error';
                       }
                       return null;
                     },
@@ -174,39 +178,35 @@ class _SingUpScreenState extends State<SingUpScreen> {
                     height: 30.0,
                   ),
                   GestureDetector(
-                    onTap: () async {
+                    onTap: () {
                       if (formGlobalKey.currentState!.validate()) {
                         _counterProvider
-                            .registerUser(
+                            .loginUser(
                           email: _email.text,
                           password: _password.text,
                         )
-                            .then(
-                          (value) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                backgroundColor: value != 'Successful'
-                                    ? AppColor.lightColorScheme.errorContainer
-                                    : AppColor
-                                        .lightColorScheme.secondaryContainer,
-                                content: Text(
-                                  value,
-                                  style: AppStyle.bodyText1.copyWith(
-                                    color: value != 'Successful'
-                                        ? AppColor.lightColorScheme.error
-                                        : AppColor.lightColorScheme.secondary,
-                                  ),
+                            .then((value) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              backgroundColor:
+                                  value != 'Successful Login Details'
+                                      ? AppColor.lightColorScheme.errorContainer
+                                      : AppColor
+                                          .lightColorScheme.secondaryContainer,
+                              content: Text(
+                                value,
+                                style: AppStyle.bodyText1.copyWith(
+                                  color: value != 'Successful Login Details'
+                                      ? AppColor.lightColorScheme.error
+                                      : AppColor.lightColorScheme.secondary,
                                 ),
                               ),
-                            );
-
-                            if (value == 'Successful') {
-                              context.router.push(
-                                const SingInScreen(),
-                              );
-                            }
-                          },
-                        );
+                            ),
+                          );
+                          if (value == 'Successful Login Details') {
+                            context.router.push(const HomeScreen());
+                          }
+                        });
                       }
                     },
                     child: Container(
@@ -220,7 +220,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
                         color: AppColor.lightColorScheme.primary,
                       ),
                       child: Text(
-                        'Sign Up',
+                        'Sign In',
                         textAlign: TextAlign.center,
                         style: AppStyle.headline5.copyWith(
                           color: AppColor.lightColorScheme.onPrimary,
@@ -234,16 +234,16 @@ class _SingUpScreenState extends State<SingUpScreen> {
             Center(
               child: RichText(
                 text: TextSpan(
-                  text: 'Already have an account?',
+                  text: 'Don’t have an account?',
                   style: AppStyle.headline6.copyWith(
                     color: AppColor.lightColorScheme.secondary,
                   ),
                   children: [
                     TextSpan(
-                      text: ' Sign In',
+                      text: ' Sign Up',
                       recognizer: TapGestureRecognizer()
                         ..onTap = () => context.router.push(
-                              const SingInScreen(),
+                              const SingUpScreen(),
                             ),
                       style: AppStyle.headline6.copyWith(
                         color: AppColor.lightColorScheme.primary,

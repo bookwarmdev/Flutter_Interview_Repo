@@ -1,55 +1,18 @@
-import 'package:auto_route/auto_route.dart';
-import 'package:lox_corporate_services/presentation/screens/app_nav.dart';
-import 'package:lox_corporate_services/presentation/screens/auth/auth.dart';
-import 'package:lox_corporate_services/presentation/screens/home/search/payment_message.dart';
-import 'package:lox_corporate_services/presentation/screens/home/search/search.dart';
-import '../screens/intro/intro.dart';
+import 'package:auto_route/auto_route.dart'; 
+import 'package:interview_newstartup/presentation/screens/presentation.dart';
 
+// @CupertinoAutoRouter
+// @AdaptiveAutoRouter
+// @CustomAutoRouter
 @MaterialAutoRouter(
-  replaceInRouteName: 'screen,route',
+  replaceInRouteName: 'Page,Route',
   routes: <AutoRoute>[
-    AutoRoute(page: IntroScreen, initial: true),
-    CustomRoute(
-      page: LoginScreen,
-      transitionsBuilder: TransitionsBuilders.slideRight,
-    ),
-    CustomRoute(
+    AutoRoute(
       page: SingUpScreen,
-      transitionsBuilder: TransitionsBuilders.slideRight,
+      initial: true,
     ),
-    CustomRoute(
-      page: AppNav,
-      transitionsBuilder: TransitionsBuilders.slideRight,
-    ),
-    CustomRoute(
-      page: SearchScreen,
-      transitionsBuilder: TransitionsBuilders.fadeIn,
-    ),
-    CustomRoute(
-      page: NuresProfileScreen,
-      transitionsBuilder: TransitionsBuilders.fadeIn,
-    ),
-    CustomRoute(
-      page: AppointmentScreen,
-      transitionsBuilder: TransitionsBuilders.fadeIn,
-    ),
-    CustomRoute(
-      page: ShedueAppointmentScreen,
-      transitionsBuilder: TransitionsBuilders.fadeIn,
-    ),
-    CustomRoute(
-      page: PaymentScreen,
-      transitionsBuilder: TransitionsBuilders.fadeIn,
-    ),
-    CustomRoute(
-      page: PaymentMessage,
-      transitionsBuilder: TransitionsBuilders.fadeIn,
-    ),
-    CustomRoute(
-      page: AppointmentScreen,
-      transitionsBuilder: TransitionsBuilders.fadeIn,
-    ),
+    AutoRoute(page: SingInScreen),
+    AutoRoute(page: HomeScreen),
   ],
 )
-// extend the generated private router
 class $AppRouter {}

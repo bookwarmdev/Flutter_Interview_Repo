@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.lox_corporate_services">
+    package="com.example.interview_newstartup">
    <application
-        android:label="lox_corporate_services"
+        android:label="interview_newstartup"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

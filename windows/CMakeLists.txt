@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
-project(lox_corporate_services LANGUAGES CXX)
+project(interview_newstartup LANGUAGES CXX)
 
-set(BINARY_NAME "lox_corporate_services")
+set(BINARY_NAME "interview_newstartup")
 
 cmake_policy(SET CMP0063 NEW)
 

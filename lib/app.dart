@@ -1,26 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:lox_corporate_services/controller/provider/provider.dart';
- import 'package:provider/provider.dart';
-import 'presentation/routers/router.gr.dart' as route;
+
+import 'presentation/routers/router.gr.dart';
 
 class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
 
-  final _appRouter = route.AppRouter();
-
   // This widget is the root of your application.
+  final _appRouter = AppRouter();
+
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (context) => SearchProvider()),
-        ChangeNotifierProvider(create: (context) => AppointmentListProvider()),
-      ],
-      child: MaterialApp.router(
-        title: 'Flutter Demo',
-        routerDelegate: _appRouter.delegate(),
-        routeInformationParser: _appRouter.defaultRouteParser(),
-      ),
-    );
+    return MaterialApp.router(
+      title: 'Interview App',
+      routeInformationParser: _appRouter.defaultRouteParser(),
+      routerDelegate: _appRouter.delegate(),
+    ); 
   }
 }
